@@ -1,48 +1,56 @@
 package org.cli;
 
+import org.cli.utils.copy.CopyFile;
+import org.cli.utils.Learners;
+import org.cli.utils.WriteFile;
+import org.cli.utils.copy.CopyKataFile;
+import org.cli.utils.copy.CopyTestFile;
 import picocli.CommandLine;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 @CommandLine.Command(name = "move")
 public class Move implements Runnable {
 
-    @CommandLine.Parameters(index = "0")
+    @CommandLine.Parameters(index = "0", description = "The file to move across to /main & /test")
     private String fileName;
 
     @Override
     public void run() {
-        Path learnersPath = Paths.get("src", "main", "resources", "learners.csv");
-        Path kata = Paths.get("src", "main", "java", "org", "cli", "katas", fileName);
-        Path test = Paths.get("src", "test", "java", "org", "cli", "katas", fileName.split("\\.")[0] + "Test." + fileName.split("\\.")[1]);
-        try {
-            List<String> learners = Files.readAllLines(learnersPath);
-            learners.removeFirst();
-            String content = Files.readString(kata);
-            String testContent = Files.readString(test);
+        Learners learners;
+        CopyFile kata;
+        CopyFile test;
 
-            for (String learner : learners) {
-                Path path = Paths.get("src", "main", "java", "org", "kata", learner, fileName);
-                if (path.toFile().exists()) {
+        try {
+            learners = new Learners();
+            kata = new CopyKataFile(Paths.get("src", "main", "java", "org", "cli", "katas"), fileName);
+            test = new CopyTestFile(Paths.get("src", "test", "java", "org", "cli", "katas"), fileName);
+        } catch (IOException e) {
+            System.out.println("ERROR : " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+        try {
+
+            for (String learner : learners.getLearners()) {
+                WriteFile toWrite = new WriteFile(Paths.get("src", "main", "java", "org", "kata"), learner, kata.getFileName());
+                if (toWrite.exists()) {
                     System.out.println("File exists...");
                     continue;
                 }
-                content = content.replaceFirst("package org.cli.katas;", "package org.kata." + learner + ";");
-                Files.writeString(path, content);
+                System.out.println("Creating " + learner + "/" + kata.getFileName());
+                toWrite.writeFile(kata);
             }
 
-            for (String learner : learners) {
-                Path path = Paths.get("src", "test", "java", "org", "kata", learner, fileName.split("\\.")[0] + "Test." + fileName.split("\\.")[1]);
-                if (path.toFile().exists()) {
+            for (String learner : learners.getLearners()) {
+                WriteFile toWrite = new WriteFile(Paths.get("src", "test", "java", "org", "kata"), learner, test.getFileName());
+                if (toWrite.exists()) {
                     System.out.println("File exists...");
                     continue;
                 }
-                testContent = testContent.replaceFirst("package org.cli.katas;", "package org.kata." + learner + ";");
-                Files.writeString(path, testContent);
+                System.out.println("Creating " + learner + "/" + test.getFileName());
+                toWrite.writeFile(test);
             }
 
         } catch (IOException e) {
@@ -50,4 +58,6 @@ public class Move implements Runnable {
             System.out.println("No file found");
         }
     }
+
+
 }
