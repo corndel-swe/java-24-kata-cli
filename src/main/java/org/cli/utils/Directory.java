@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 
 public class Directory {
 
-
     private final Path basePath;
 
     public Directory(Path basePath) {

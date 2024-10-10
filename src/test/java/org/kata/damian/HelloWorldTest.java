@@ -1,4 +1,4 @@
-package org.kata.charlie;
+package org.kata.damian;
 
 import org.junit.jupiter.api.Test;
 

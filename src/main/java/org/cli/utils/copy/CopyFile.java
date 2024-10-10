@@ -7,16 +7,16 @@ import java.nio.file.Paths;
 
 public abstract class CopyFile {
 
-    private Path basePath;
-    private String fileName;
-    private String content;
+    private final String fileName;
+    private final String content;
 
     public CopyFile(Path basePath, String fileName) throws IOException {
-        this.basePath = basePath;
+        if (!fileName.split("\\.")[1].equals("java")) {
+            throw new IOException(".java file needed");
+        }
         this.fileName = fileName;
         this.content = Files.readString(Paths.get(basePath.toString(), fileName));
     }
-
 
     public String getFileName() {
         return fileName;

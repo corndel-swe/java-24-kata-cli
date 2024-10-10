@@ -1,4 +1,4 @@
-package org.cli;
+package org.cli.commands;
 
 import org.cli.utils.Directory;
 import org.cli.utils.Learners;
