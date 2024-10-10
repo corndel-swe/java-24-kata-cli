@@ -16,10 +16,11 @@ public class Learners {
 
     public Learners(String fileName) throws IOException {
         Path learnersPath = Paths.get("src", "main", "resources", fileName);
-        learners = Files.readAllLines(learnersPath);
-        if (learners.getFirst().equalsIgnoreCase("learner")) {
-            learners.removeFirst();
+        List<String> learnersCSV = Files.readAllLines(learnersPath);
+        if (learnersCSV.getFirst().equalsIgnoreCase("learner")) {
+            learnersCSV.removeFirst();
         }
+        learners = learnersCSV.stream().map(l -> l.toLowerCase().replaceAll(" ", "_")).toList();
     }
 
     public List<String> getLearners() {

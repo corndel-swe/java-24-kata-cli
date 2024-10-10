@@ -2,7 +2,7 @@ package org.cli;
 
 import picocli.CommandLine;
 
-@CommandLine.Command(name="kata-cli", subcommands = {Move.class, Mkdir.class} )
+@CommandLine.Command(name = "kata-cli", subcommands = {Move.class, Mkdir.class})
 public class Main {
     public static void main(String[] args) {
         CommandLine commandLine = new CommandLine(new Main());
