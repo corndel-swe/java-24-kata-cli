@@ -3,8 +3,8 @@ package org.cli.commands;
 import org.cli.utils.copy.CopyFile;
 import org.cli.utils.Learners;
 import org.cli.utils.WriteFile;
-import org.cli.utils.copy.CopyKataFile;
-import org.cli.utils.copy.CopyTestFile;
+import org.cli.utils.copy.KataFile;
+import org.cli.utils.copy.TestFile;
 import picocli.CommandLine;
 
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 @CommandLine.Command(name = "move")
 public class Move implements Runnable {
 
-    @CommandLine.Parameters(index = "0", description = "The file to move across to /main & /test")
+    @CommandLine.Parameters(index = "0", description = "The java file inside src/main/java/org/cli/katas to move across to \n - src/main/java/org/kata/LEARNER \n - src/test/java/org/kata/LEARNER")
     private String fileName;
 
     @Override
@@ -24,8 +24,8 @@ public class Move implements Runnable {
 
         try {
             learners = new Learners();
-            kata = new CopyKataFile(Paths.get("src", "main", "java", "org", "cli", "katas"), fileName);
-            test = new CopyTestFile(Paths.get("src", "test", "java", "org", "cli", "katas"), fileName);
+            kata = new KataFile(Paths.get("src", "main", "java", "org", "cli", "katas"), fileName);
+            test = new TestFile(Paths.get("src", "test", "java", "org", "cli", "katas"), fileName);
         } catch (IOException e) {
             System.out.println("ERROR : " + e.getMessage());
             throw new RuntimeException(e);
@@ -58,6 +58,5 @@ public class Move implements Runnable {
             System.out.println("No file found");
         }
     }
-
 
 }

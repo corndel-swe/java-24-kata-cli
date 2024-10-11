@@ -13,7 +13,7 @@ public class Directory {
         this.basePath = basePath;
     }
 
-    public void createDirectory(String directory) {
+    public void createSubDirectory(String directory) {
         Path newDirectoryPath = Paths.get(basePath.toString(), directory);
         try {
             System.out.println("Creating " + newDirectoryPath);
@@ -21,5 +21,11 @@ public class Directory {
         } catch (IOException e) {
             System.out.printf(" - /%s already exists moving on...\n", directory);
         }
+    }
+
+    public void removeFileFromSubDirectory(String directory, String fileName) throws IOException {
+        Path fileToRemove = Paths.get(basePath.toString(), directory,fileName);
+        System.out.println("Removing " + fileToRemove);
+        Files.deleteIfExists(fileToRemove);
     }
 }

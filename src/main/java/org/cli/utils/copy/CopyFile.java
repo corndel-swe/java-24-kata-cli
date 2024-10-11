@@ -22,11 +22,7 @@ public abstract class CopyFile {
         return fileName;
     }
 
-    public String getContent() {
-        return content;
-    }
-
     public String getFileContentForLearner(String learner) {
-        return getContent().replaceFirst("package org.cli.katas;", "package org.kata." + learner + ";");
+        return content.replaceFirst("package org.cli.katas;", "package org.kata." + learner + ";");
     }
 }

@@ -4,12 +4,10 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 
-public class CopyKataFile extends CopyFile {
+public class KataFile extends CopyFile {
 
-    public CopyKataFile(Path basePath, String fileName) throws IOException {
+    public KataFile(Path basePath, String fileName) throws IOException {
         super(basePath, fileName);
     }
-
-
 
 }

@@ -20,8 +20,8 @@ public class WriteFile {
         return path.toFile().exists();
     }
 
-    public void writeFile(CopyFile readFile) throws IOException {
-        String content = readFile.getFileContentForLearner(learner);
+    public void writeFile(CopyFile copyFile) throws IOException {
+        String content = copyFile.getFileContentForLearner(learner);
         Files.writeString(path, content);
     }
 }
