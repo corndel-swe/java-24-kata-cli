@@ -1,5 +1,8 @@
 package org.kata.pablo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MissingLetters {
 
     /**
@@ -16,7 +19,24 @@ public class MissingLetters {
      * - Non-alphabetical characters (numbers, spaces, punctuation) are ignored.
      */
     public String getMissingLetters(String word) {
-        return "abcdefghijklmnopqrstuvwxyz";
+        List<Character> alphabet = new ArrayList<>();
+        for (char i = 'a'; i <= 'z'; i++) {
+            alphabet.add(i);
+        }
+
+        String lowerWord = word.toLowerCase();
+        for (Character i : lowerWord.toCharArray()) {
+            if (Character.isLetter(i)) {
+                alphabet.remove(i);
+            }
+        }
+
+        StringBuilder result = new StringBuilder();
+        for (Character i : alphabet) {
+            result.append(i);
+        }
+
+        return result.toString();
     }
 }
 
