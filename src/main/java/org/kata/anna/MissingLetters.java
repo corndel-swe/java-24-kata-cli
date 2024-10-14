@@ -1,5 +1,10 @@
 package org.kata.anna;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class MissingLetters {
 
     /**
@@ -16,7 +21,37 @@ public class MissingLetters {
      * - Non-alphabetical characters (numbers, spaces, punctuation) are ignored.
      */
     public String getMissingLetters(String word) {
-        return "abcdefghijklmnopqrstuvwxyz";
+
+        // Create missing letters list
+        List<String> missingLetters = new ArrayList<>();
+
+        // make word lowercase
+        String lowercaseWord = word.toLowerCase();
+
+        // define characters to check against
+        String alphabetString = "abcdefghijklmnopqrstuvwxyz";
+
+        // Split alphabet into list for checking
+        String[] alphabet = alphabetString.split("");
+
+        // For each letter in alphabet, if missing add to missingletters list
+        for (var i : alphabet){
+            var result = !lowercaseWord.contains(i) ? missingLetters.add(i) : null;
+        }
+        // Join the list into a string and print and return
+        String finalList = String.join(", ", missingLetters);
+        String returnItem = finalList.equals("") ? "There are no missing letters" : finalList;
+        System.out.println(returnItem);
+        return returnItem;
+    }
+
+
+    // for testing
+    public static void main(String[] args) {
+        String word = "abcdefghijklmnopqrstuvwxyz";
+        MissingLetters help = new MissingLetters();
+
+        help.getMissingLetters(word);
     }
 }
 
