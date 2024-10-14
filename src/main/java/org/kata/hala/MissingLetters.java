@@ -16,7 +16,12 @@ public class MissingLetters {
      * - Non-alphabetical characters (numbers, spaces, punctuation) are ignored.
      */
     public String getMissingLetters(String word) {
-        return "abcdefghijklmnopqrstuvwxyz";
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        for (char letter: word.toLowerCase().toCharArray()){
+            alphabet = alphabet.replace(Character.toString(letter),"");
+        }
+
+        return alphabet;
     }
 }
 
