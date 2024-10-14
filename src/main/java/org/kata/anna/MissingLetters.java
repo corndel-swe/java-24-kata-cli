@@ -1,5 +1,8 @@
 package org.kata.anna;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MissingLetters {
 
     /**
@@ -16,6 +19,17 @@ public class MissingLetters {
      * - Non-alphabetical characters (numbers, spaces, punctuation) are ignored.
      */
     public String getMissingLetters(String word) {
+
+//        List alphabet = new ArrayList();
+
+        String alphabetString = "abcdefghijklmnopqrstuvwxyz";
+
+        String[] alphabet = alphabetString.split("");
+
+        for (var i : alphabet){
+
+        }
+
         return "abcdefghijklmnopqrstuvwxyz";
     }
 }
