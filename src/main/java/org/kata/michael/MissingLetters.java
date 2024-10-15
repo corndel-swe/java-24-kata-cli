@@ -1,5 +1,8 @@
 package org.kata.michael;
 
+import java.util.Set;
+import java.util.HashSet;
+
 public class MissingLetters {
 
     /**
@@ -16,7 +19,30 @@ public class MissingLetters {
      * - Non-alphabetical characters (numbers, spaces, punctuation) are ignored.
      */
     public String getMissingLetters(String word) {
-        return "abcdefghijklmnopqrstuvwxyz";
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+        // convert string into array of characters
+        char[] charArray = word.toCharArray();
+
+        // check for empty input
+        if (charArray.length == 0) {
+            return alphabet;
+        }
+
+        // turn array of characters into a set of unique characters
+        Set<Character> charSet = new HashSet<>();
+        for (char character : charArray) {
+            charSet.add(character);
+        }
+
+        // turn set of characters into a regex pattern
+        StringBuilder regex = new StringBuilder("(?i)[]");
+        for (char character : charSet) {
+            regex.insert(5, character);
+        }
+
+        // filter out letters from alphabet using regex
+        return alphabet.replaceAll(regex.toString(), "");
     }
 }
 
