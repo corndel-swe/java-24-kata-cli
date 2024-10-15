@@ -1,5 +1,8 @@
 package org.kata.charlie;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MissingLetters {
 
     /**
@@ -16,7 +19,30 @@ public class MissingLetters {
      * - Non-alphabetical characters (numbers, spaces, punctuation) are ignored.
      */
     public String getMissingLetters(String word) {
-        return "abcdefghijklmnopqrstuvwxyz";
+        if (word == null || word.isEmpty()) {
+            return "abcdefghijklmnopqrstuvwxyz";
+        }
+
+        String lowerCase = word.toLowerCase();
+        char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+
+        Set<Character> missingLetterSet = new HashSet<>();
+
+        for (char letter : alphabet) {
+            missingLetterSet.add(letter);
+        }
+
+        for (int i = 0; i < lowerCase.length(); i++) {
+            missingLetterSet.remove(lowerCase.charAt(i));
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (char letter : missingLetterSet) {
+            stringBuilder.append(letter);
+        }
+
+        return stringBuilder.toString();
     }
 }
 
