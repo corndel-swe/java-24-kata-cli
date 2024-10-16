@@ -1,5 +1,8 @@
 package org.kata.meron;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EmotiString {
 
     /**
@@ -14,7 +17,17 @@ public class EmotiString {
      * @return {@code String} a string with the specified words replaced by emoticons
      */
     public String emotify(String sentence) {
-        return null;
+
+        HashMap <String, String> map = new HashMap<>();
+        map.put("smile", ":)");
+        map.put("grin", ":D");
+        map.put("sad", ":(");
+        map.put("mad", ":@");
+
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+             sentence = sentence.replace(entry.getKey(), entry.getValue());
+        }
+        return sentence;
     }
 
 }
