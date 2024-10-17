@@ -38,7 +38,7 @@ It also gives Charlie a break :blush: .
     git checkout learner-name-solutions
     ```
 
-> [!INFO]  
+> [!IMPORTANT]  
 > Your `learner-name-solutions` branch will need a PR open to be added to main. At the end of the day, each PR will be merged into
 `main`.
 
