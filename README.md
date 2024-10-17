@@ -44,7 +44,7 @@ It also gives Charlie a break :blush: .
 
 ### How to Start Solving
 
-Make sure you are on the `solutions` branch and it is up to date: `git pull origin solutions`.
+Make sure you are on your own `learner-name-solutions` branch and it is up to date: `git pull origin main`.
 
 To start solving a kata, navigate to the `src/main/java/org/kata` directory, where you will find a directory named after
 you.
