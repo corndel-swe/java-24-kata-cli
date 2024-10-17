@@ -31,15 +31,15 @@ It also gives Charlie a break :blush: .
     ./mvnw clean compile
     ```
 
-3. If you are solving a kata, make sure you are on the `solutions` branch, as the `main` branch is protected and cannot
+3. If you are solving a kata, make sure you are on the `learner-name-solutions` branch, as the `main` branch is protected and cannot
    be pushed to.
 
     ```bash
-    git checkout solutions
+    git checkout learner-name-solutions
     ```
 
-> [!WARNING]  
-> The solutions branch will have a PR open each day for you to push to. At the end of the day, it will be merged into
+> [!INFO]  
+> Your `learner-name-solutions` branch will need a PR open to be added to main. At the end of the day, each PR will be merged into
 `main`.
 
 ### How to Start Solving
