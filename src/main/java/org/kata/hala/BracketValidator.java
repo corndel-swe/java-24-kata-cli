@@ -1,5 +1,6 @@
 package org.kata.hala;
-
+import java.util.List;
+import java.util.Arrays;
 public class BracketValidator {
 
     /**
@@ -15,6 +16,29 @@ public class BracketValidator {
      * {@code false} otherwise
      */
     public boolean validate(String input) {
-        return false;
+        int totalPunctuation = 0;
+
+        List<String> allowedPunctuation = Arrays.asList("(", ")", "{", "}", "[", "]");
+
+        for (char character : input.toCharArray()) {
+            if (allowedPunctuation.contains(String.valueOf(character))) {
+                totalPunctuation++;
+            }
+        }
+
+        System.out.println("Total: " + totalPunctuation);
+
+        if (totalPunctuation % 2 == 0) {
+            System.out.println("true");
+            return true;
+        } else {
+            System.out.println("false");
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        BracketValidator bracketValidator = new BracketValidator();
+        bracketValidator.validate("(");
     }
 }
