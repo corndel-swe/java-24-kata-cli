@@ -1,5 +1,9 @@
 package org.kata.pablo;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+
 public class BracketValidator {
 
     /**
@@ -15,6 +19,18 @@ public class BracketValidator {
      * {@code false} otherwise
      */
     public boolean validate(String input) {
-        return false;
+        Map<Character, Character> brackets = Map.of('(', ')', '{', '}', '[', ']');
+        Stack<Character> stack = new Stack<>();
+
+        for (char x : input.toCharArray()) {
+            if (brackets.containsKey(x)) {
+                stack.push(x);
+            } else if (brackets.containsValue(x) && brackets.get(stack.pop()) != x) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
+

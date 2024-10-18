@@ -14,7 +14,12 @@ public class EmotiString {
      * @return {@code String} a string with the specified words replaced by emoticons
      */
     public String emotify(String sentence) {
-        return null;
+
+        return sentence
+                .replaceAll("smile", ":)")
+                .replaceAll("grin", ":D")
+                .replaceAll("sad", ":(")
+                .replaceAll("mad", ":@");
     }
 
 }

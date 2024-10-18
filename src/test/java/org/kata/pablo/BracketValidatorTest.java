@@ -14,19 +14,16 @@ class BracketValidatorTest {
         assertTrue(validator.validate("{ [] ( ) }"));
     }
 
-    @Disabled
     @Test
     public void shouldReturnFalseForMissingCloser() {
         assertFalse(validator.validate("{ [ }"));
     }
 
-    @Disabled
     @Test
     public void shouldReturnFalseForUnBalancedBrackets() {
         assertFalse(validator.validate("{ [(] ) }"));
     }
 
-    @Disabled
     @Test
     public void shouldReturnTrueForBalancedBracketsWithCharacters() {
         assertTrue(validator.validate("(() => { " +
