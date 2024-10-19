@@ -1,6 +1,5 @@
 package org.kata.michael;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,19 +13,16 @@ class BracketValidatorTest {
         assertTrue(validator.validate("{ [] ( ) }"));
     }
 
-    @Disabled
     @Test
     public void shouldReturnFalseForMissingCloser() {
         assertFalse(validator.validate("{ [ }"));
     }
 
-    @Disabled
     @Test
     public void shouldReturnFalseForUnBalancedBrackets() {
         assertFalse(validator.validate("{ [(] ) }"));
     }
 
-    @Disabled
     @Test
     public void shouldReturnTrueForBalancedBracketsWithCharacters() {
         assertTrue(validator.validate("(() => { " +

@@ -1,5 +1,7 @@
 package org.kata.michael;
 
+import java.util.Stack;
+
 public class BracketValidator {
 
   /**
@@ -15,6 +17,43 @@ public class BracketValidator {
    * {@code false} otherwise
    */
   public boolean validate(String input) {
-    return false;
+    // create a stack to track opening brackets
+    Stack<String> openingBracketStack = new Stack<>();
+
+    // convert input into array of string characters
+    String[] strArr = input.split("");
+
+    // loop over characters and identify brackets in switch statement
+    for (String c : strArr) {
+      switch (c) {
+        case "(" -> openingBracketStack.push("(");
+        case "{" -> openingBracketStack.push("{");
+        case "[" -> openingBracketStack.push("[");
+        // closing brackets can only close previous open bracket if they're the same type
+        case ")" -> {
+          if (openingBracketStack.peek().equals("(")) {
+            openingBracketStack.pop();
+          } else {
+            return false;
+          }
+        }
+        case "}" -> {
+          if (openingBracketStack.peek().equals("{")) {
+            openingBracketStack.pop();
+          } else {
+            return false;
+          }
+        }
+        case "]" -> {
+          if (openingBracketStack.peek().equals("[")) {
+            openingBracketStack.pop();
+          } else {
+            return false;
+          }
+        }
+      }
+    }
+
+    return openingBracketStack.isEmpty();
   }
 }
