@@ -1,5 +1,8 @@
 package org.kata.damian;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class EmotiString {
 
     /**
@@ -13,8 +16,21 @@ public class EmotiString {
      * @param sentence the input string to update
      * @return {@code String} a string with the specified words replaced by emoticons
      */
+
+
     public String emotify(String sentence) {
-        return null;
+        // Define a map of words to emoticons. Using stream with a switch case.
+        return Arrays.stream(sentence.split(" "))
+                .map(word -> {
+                    switch (word) {
+                        case "smile": return ":)";
+                        case "grin": return ":D";
+                        case "sad": return ":(";
+                        case "mad": return ":@";
+                        default: return word;
+                    }
+                })
+                .collect(Collectors.joining(" "));
     }
 
 }
