@@ -1,4 +1,4 @@
-package org.kata.damian;
+package org.kata.james;
 
 public class LargestPrime {
 

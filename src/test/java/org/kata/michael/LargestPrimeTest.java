@@ -1,4 +1,4 @@
-package org.kata.damian;
+package org.kata.michael;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
