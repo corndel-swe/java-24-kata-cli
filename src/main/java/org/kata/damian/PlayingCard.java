@@ -1,5 +1,7 @@
 package org.kata.damian;
 
+import java.sql.Array;
+
 /**
  * The Comparable interface defines a class's natural sorting order by allowing objects to be compared based on a custom comparison logic in the compareTo method.
  * It is implemented by classes like String, Integer, and enums, allowing them to define ordering for consistent comparisons.
@@ -48,12 +50,16 @@ public class PlayingCard implements Comparable<PlayingCard> {
      */
     @Override
     public int compareTo(PlayingCard playingCard) {
-        return -1;
+        if (this.suit == playingCard.getSuit()) {
+            return Integer.compare(this.value, playingCard.getValue());
+        }
+
+        // Well this .ordinal() method is handy I must say - just saved me hours of messy code.
+        return Integer.compare(this.suit.ordinal(), playingCard.getSuit().ordinal());
     }
 
     public static void main(String[] args) {
 
-        // CODE PLAYGROUND - DON'T FORGET THE TESTS ;)
 
         PlayingCard aceOfSpades = new PlayingCard(Suit.SPADES, 14, "A");
         PlayingCard aceOfHearts = new PlayingCard(Suit.HEARTS, 14, "A");
