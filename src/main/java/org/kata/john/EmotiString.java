@@ -1,5 +1,8 @@
 package org.kata.john;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EmotiString {
 
     /**
@@ -14,7 +17,16 @@ public class EmotiString {
      * @return {@code String} a string with the specified words replaced by emoticons
      */
     public String emotify(String sentence) {
-        return null;
-    }
+        HashMap<String, String> wordToEmoji = new HashMap<>();
+        wordToEmoji.put("smile", ":)");
+        wordToEmoji.put("grin", ":D");
+        wordToEmoji.put("sad", ":(");
+        wordToEmoji.put("mad", ":@");
 
+        for(Map.Entry<String, String> entry : wordToEmoji.entrySet()){
+            sentence = sentence.replaceAll(entry.getKey(), entry.getValue());
+        }
+
+        return sentence;
+    }
 }
