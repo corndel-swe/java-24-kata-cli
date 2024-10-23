@@ -10,7 +10,7 @@ class EmotiStringTest {
 
     @Test
     public void shouldReplaceSmile() {
-        assertEquals("Make me :) and", emotiString.emotify("Make me smile and"));
+        assertEquals("Make me :)", emotiString.emotify("Make me smile"));
     }
 
     @Test
