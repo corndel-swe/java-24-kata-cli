@@ -16,9 +16,30 @@ public class LargestPrime {
      * 1 and itself.
      */
 
-    public int getLargestPrime(int n) {
+    public static int getLargestPrime(int n) {
+        if(n < 2){
+            return -1;
+        } else if (isPrime(n)){
+            return n;
+        } else {
+            for(int i = n-1; i > 2 ; i--) {
+                if(isPrime(i)){
+                    return i;
+                }
+            }
+        }
         return -1;
     }
+
+    private static boolean isPrime(int n){
+        for(int i = 2; i*i <= n; i++){
+            if(n % i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
 
 

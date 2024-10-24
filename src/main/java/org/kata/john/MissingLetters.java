@@ -1,5 +1,11 @@
 package org.kata.john;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MissingLetters {
 
     /**
@@ -15,8 +21,21 @@ public class MissingLetters {
      * - The result should be in lowercase and in alphabetical order.
      * - Non-alphabetical characters (numbers, spaces, punctuation) are ignored.
      */
-    public String getMissingLetters(String word) {
-        return "abcdefghijklmnopqrstuvwxyz";
+    public static String getMissingLetters(String word) {
+        // create a hashset of the alphabet
+        // using LinkedHashSet to ensure that alphabetical order is maintained
+        String alphabet ="abcdefghijklmnopqrstuvwxyz";
+        LinkedHashSet<String> alphabetSet = new LinkedHashSet<>(Arrays.asList(alphabet.split("")));
+
+        // get only the letters from the input string
+        Pattern pattern = Pattern.compile("[a-z]");
+        Matcher matcher = pattern.matcher(word.toLowerCase());
+        while(matcher.find()){
+            alphabetSet.remove(matcher.group());
+        }
+
+        // return remaining letters as a string
+        return String.join("", alphabetSet);
     }
 }
 
