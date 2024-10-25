@@ -17,8 +17,50 @@ public class LargestPrime {
      */
 
     public int getLargestPrime(int n) {
-        return -1;
+        int highestPrimeNumber = 0;
+        boolean notPrime = false;
+
+        if (n > 1) {
+            // Check for prime numbers in range descending
+            for (int numbersDesc = n; numbersDesc > 1; numbersDesc--) {
+                //            System.out.println("numbersDesc:" + numbersDesc);
+
+                // Check if current number is a prime numer
+                for (int j = 2; j < numbersDesc; j++) {
+
+                    // If number is % by a number not 1 or itself, number not prime
+                    if (numbersDesc % j == 0) {
+                        //                    System.out.println("numbersDesc:" + numbersDesc);
+                        //                    System.out.println("Not prime");
+                        notPrime = true;
+                        break;
+                    }
+                }
+                // If the number is not prime, set highest number
+
+                highestPrimeNumber = notPrime ? highestPrimeNumber : numbersDesc;
+                notPrime = false;
+//                System.out.println(highestPrimeNumber);
+                if (highestPrimeNumber > 0) {
+                    System.out.println("Highest prime number has been found");
+                    break;
+                }
+
+            }
+
+            return highestPrimeNumber;
+        } else {
+            return -1;
+        }
     }
+
+
+    public static void main(String[] args) {
+        LargestPrime number = new LargestPrime();
+
+        System.out.println(number.getLargestPrime(1));
+    }
+
 }
 
 
