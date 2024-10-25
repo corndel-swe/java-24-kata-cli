@@ -20,7 +20,7 @@ public class LargestPrime {
         int highestPrimeNumber = 0;
         boolean notPrime = false;
 
-        if (n > 2) {
+        if (n > 1) {
             // Check for prime numbers in range descending
             for (int numbersDesc = n; numbersDesc > 1; numbersDesc--) {
                 //            System.out.println("numbersDesc:" + numbersDesc);
