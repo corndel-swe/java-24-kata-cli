@@ -17,7 +17,21 @@ public class LargestPrime {
      */
 
     public int getLargestPrime(int n) {
+        for (int i = n; i >= 2; i--) {
+            if (isPrime(i)) {
+                return i;
+            }
+        }
         return -1;
+    }
+
+    public boolean isPrime(int x) {
+        for (int i = 2; i <= Math.sqrt(x); i++) {
+            if (x % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
