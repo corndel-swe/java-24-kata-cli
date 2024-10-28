@@ -1,6 +1,6 @@
 package org.kata.hala;
-import java.util.List;
-import java.util.Arrays;
+import java.util.*;
+
 public class BracketValidator {
 
     /**
@@ -16,29 +16,27 @@ public class BracketValidator {
      * {@code false} otherwise
      */
     public boolean validate(String input) {
-        int totalPunctuation = 0;
 
-        List<String> allowedPunctuation = Arrays.asList("(", ")", "{", "}", "[", "]");
+        HashMap<Character, Character> allowedPunctuation = new HashMap<>(Map.of(
+                '(', ')',
+                '[', ']',
+                '{', '}'
+        ));
 
+        Stack<Character> stack = new Stack<>();
         for (char character : input.toCharArray()) {
-            if (allowedPunctuation.contains(String.valueOf(character))) {
-                totalPunctuation++;
-            }
-        }
+            //  check open bracket
+            if (allowedPunctuation.containsKey(character)) {
+                stack.push(character);
+                // check closing bracket
+            } else if (allowedPunctuation.containsValue(character))
+            {
+                // check if the stack is empty
+                // check if the last added bracket is doesnt equal the current character
+            if (stack.isEmpty() || allowedPunctuation.get(stack.pop()) != character)
+                return false;
+            }}
 
-        System.out.println("Total: " + totalPunctuation);
-
-        if (totalPunctuation % 2 == 0) {
-            System.out.println("true");
-            return true;
-        } else {
-            System.out.println("false");
-            return false;
-        }
-    }
-
-    public static void main(String[] args) {
-        BracketValidator bracketValidator = new BracketValidator();
-        bracketValidator.validate("(");
+        return true;
     }
 }
