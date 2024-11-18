@@ -25,7 +25,21 @@ import java.util.Set;
 public class PermutationsPalindrome {
 
     public static boolean isPalindrome(String word) {
-        return true;
+        Set<String> stringSet = new HashSet<>();
+        for (String c: word.split("")) {
+            stringSet.add(c);
+        }
+        if(word.length() % 2 == 0){
+            return stringSet.size() == word.length()/2;
+        } else {
+            return stringSet.size() == (word.length()/2 + 1);
+        }
     }
+    // loop through chars
+    // check if there is a matching char
+    // odd - allow 1 unmatched / even - all matched
 
+
+    // even - set, chcek if size is n/2
+    // odd - set, check ceil n/2
 }
