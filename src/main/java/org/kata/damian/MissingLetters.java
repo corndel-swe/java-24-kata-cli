@@ -1,5 +1,8 @@
 package org.kata.damian;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MissingLetters {
 
     /**
@@ -16,7 +19,32 @@ public class MissingLetters {
      * - Non-alphabetical characters (numbers, spaces, punctuation) are ignored.
      */
     public String getMissingLetters(String word) {
-        return "abcdefghijklmnopqrstuvwxyz";
+
+// Set work to lowercase to avoid mishaps yeno
+        String lowercase = word.toLowerCase();
+
+// List of characters added in using ASCII numbers - found this method online
+        List<Character> alphabet = new ArrayList<>();
+        for (char letter = 'a'; letter <= 'z'; letter++) {
+            alphabet.add(letter);
+        }
+
+
+// Loop through string and remove characters from the list
+        for (int i = 0; i < lowercase.length(); i++) {
+            char currentChar = lowercase.charAt(i);
+
+            if (alphabet.contains(currentChar)) {
+                alphabet.remove(Character.valueOf(currentChar));
+            }
+        }
+
+// Turn list into a string
+        StringBuilder missingLetters = new StringBuilder();
+        for (char letter : alphabet) {
+            missingLetters.append(letter);
+        }
+
+        return missingLetters.toString();
     }
 }
-

@@ -27,6 +27,7 @@ class PlayingCardTest {
         assertTrue(hearts.compareTo(spades) > 0, "Hearts should be larger than Spades");
     }
 
+
     @Test
     public void heartsSmallerThanOtherSuitsShouldReturnNegative() {
         List<PlayingCard> cards = List.of(new PlayingCard(PlayingCard.Suit.CLUBS, 2, "2"), new PlayingCard(PlayingCard.Suit.DIAMONDS, 2, "2"));
@@ -35,7 +36,6 @@ class PlayingCardTest {
             assertTrue(hearts.compareTo(card) < 0, "Hearts should be smaller than Clubs and Diamonds");
         }
     }
-
 
     @Test
     public void diamondsSmallerThanClubsShouldReturnNegative() {

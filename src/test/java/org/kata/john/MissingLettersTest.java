@@ -14,25 +14,25 @@ class MissingLettersTest {
         assertEquals("abcdefghijklmnopqrstuvwxyz", missingLetters.getMissingLetters(""));
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void singleLetterShouldReturnRestOfAlphabetWithoutCharacter() {
         assertEquals("bcdefghijklmnopqrstuvwxyz", missingLetters.getMissingLetters("a"));
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void multipleLowercaseLettersShouldReturnRestOfAlphabetWithoutCharacters() {
         assertEquals("abcfgijkmnpqstuvxyz", missingLetters.getMissingLetters("hello world"));
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void multipleMixedCaseLettersShouldReturnRestOfAlphabetWithoutCharacters() {
         assertEquals("abcfgijkmnpqstuvxyz", missingLetters.getMissingLetters("hElLo WooooooRlD"));
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void allLettersShouldReturnEmptyString() {
         assertEquals("", missingLetters.getMissingLetters("The quick brown fox jumps over the lazy dog"));

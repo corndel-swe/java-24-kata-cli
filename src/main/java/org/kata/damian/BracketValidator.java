@@ -1,5 +1,9 @@
 package org.kata.damian;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 public class BracketValidator {
 
     /**
@@ -14,7 +18,33 @@ public class BracketValidator {
      * @return {@code true} if the input string's openers and closers are properly nested;
      * {@code false} otherwise
      */
+
     public boolean validate(String input) {
-        return false;
+        // Stack uses a last in first out method which works well for this
+        Stack<Character> stack = new Stack<>();
+
+        for (char ch : input.toCharArray()) {
+            if (ch == '(' || ch == '{' || ch == '[') {
+                stack.push(ch);
+            }
+            else if (ch == ')' || ch == '}' || ch == ']') {
+                // return false if closing bracket at start
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                // Pop the last/latest opening bracket
+                char top = stack.pop();
+
+                // Check if the popped bracket matches the current closing bracket - if it doesn't return false, else continue
+                if ((top == '(' && ch != ')') ||
+                        (top == '{' && ch != '}') ||
+                        (top == '[' && ch != ']')) {
+                    return false;
+                }
+            }
+        }
+
+        // If the stack is empty, all brackets are matched, otherwise return false
+        return stack.isEmpty();
     }
 }

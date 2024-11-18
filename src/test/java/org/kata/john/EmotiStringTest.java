@@ -14,25 +14,25 @@ class EmotiStringTest {
         assertEquals("Make me :)", emotiString.emotify("Make me smile"));
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void shouldReplaceGrin() {
         assertEquals("Make me :D", emotiString.emotify("Make me grin"));
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void shouldReplaceSad() {
         assertEquals("Make me :(", emotiString.emotify("Make me sad"));
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void shouldReplaceMad() {
         assertEquals("Make me :@", emotiString.emotify("Make me mad"));
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void shouldNotReplace() {
         assertEquals("Make me dance", emotiString.emotify("Make me dance"));
