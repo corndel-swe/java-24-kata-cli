@@ -19,7 +19,7 @@ class PlayingCardTest {
         }
     }
 
-    @Disabled
+
     @Test
     public void heartsLargerThanSpadesShouldReturnPositive() {
         PlayingCard spades = new PlayingCard(PlayingCard.Suit.SPADES, 2, "2");
@@ -27,7 +27,7 @@ class PlayingCardTest {
         assertTrue(hearts.compareTo(spades) > 0, "Hearts should be larger than Spades");
     }
 
-    @Disabled
+
     @Test
     public void heartsSmallerThanOtherSuitsShouldReturnNegative() {
         List<PlayingCard> cards = List.of(new PlayingCard(PlayingCard.Suit.CLUBS, 2, "2"), new PlayingCard(PlayingCard.Suit.DIAMONDS, 2, "2"));
@@ -37,7 +37,6 @@ class PlayingCardTest {
         }
     }
 
-    @Disabled
     @Test
     public void diamondsSmallerThanClubsShouldReturnNegative() {
         PlayingCard diamonds = new PlayingCard(PlayingCard.Suit.DIAMONDS, 2, "2");
@@ -45,7 +44,7 @@ class PlayingCardTest {
         assertTrue(diamonds.compareTo(clubs) < 0, "Diamonds should be smaller than Clubs");
     }
 
-    @Disabled
+
     @Test
     public void clubsLargerThanAllSuitsShouldReturnPositive() {
         List<PlayingCard> cards = List.of(new PlayingCard(PlayingCard.Suit.SPADES, 2, "2"), new PlayingCard(PlayingCard.Suit.HEARTS, 2, "2"), new PlayingCard(PlayingCard.Suit.DIAMONDS, 2, "2"));
@@ -55,7 +54,7 @@ class PlayingCardTest {
         }
     }
 
-    @Disabled
+
     @Test
     public void sameSuitAndValueShouldReturnZero() {
         PlayingCard diamondsA = new PlayingCard(PlayingCard.Suit.DIAMONDS, 11, "J");
@@ -63,7 +62,7 @@ class PlayingCardTest {
         assertEquals(0, diamondsA.compareTo(diamondsB), "Cards with the same suit and value should be equal");
     }
 
-    @Disabled
+
     @Test
     public void sortsSuitByValueIfSameSuit() {
         List<PlayingCard> deck = getOrderedCardsBySuit(PlayingCard.Suit.SPADES);
@@ -74,7 +73,7 @@ class PlayingCardTest {
         }
     }
 
-    @Disabled
+
     @Test
     public void sortsDeck() {
         List<PlayingCard> deck = getOrderedDeck();
